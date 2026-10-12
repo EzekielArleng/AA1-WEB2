@@ -1,0 +1,303 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --brand: #ffaa66;
+    --brand-hover: #ff9847;
+    --ink: #252525;
+    --muted: #666;
+    --border: #d7d7d7;
+    --surface: #fff;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: var(--ink);
+}
+
+body {
+    overflow: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+}
+
+.topbar {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    flex: 0 0 auto;
+    background: var(--brand);
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 14px 20px;
+    background: var(--brand);
+}
+
+.brand {
+    flex: 0 0 auto;
+    color: var(--ink);
+    font-size: 1.35rem;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.route-form {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.address-field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.address-field input {
+    width: 100%;
+    min-width: 0;
+    height: 44px;
+    padding: 10px 44px 10px 13px;
+    border: 1px solid rgb(0 0 0 / 14%);
+    border-radius: 10px;
+    outline: none;
+    background: var(--surface);
+    color: var(--ink);
+}
+
+.address-field input:focus {
+    border-color: #68401f;
+    box-shadow: 0 0 0 3px rgb(255 255 255 / 40%);
+}
+
+.location-button {
+    position: absolute;
+    right: 5px;
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #4c4c4c;
+    font-size: 1.65rem;
+    line-height: 1;
+}
+
+.location-button:hover {
+    background: #fff0e3;
+}
+
+.action-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex: 0 0 auto;
+    padding: 14px 20px;
+    background: var(--brand);
+}
+
+.role-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.role-label {
+    color: #654a35;
+    font-size: 0.84rem;
+    font-weight: 500;
+}
+
+.role-label.active {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    flex: 0 0 auto;
+}
+
+.switch input {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: #fff3e8;
+    border: 1px solid rgb(0 0 0 / 18%);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3c3c3c;
+    transition: transform 0.2s ease;
+}
+
+.switch input:checked + .slider {
+    background: #ffe0c6;
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(19px);
+    background: #3c3c3c;
+}
+
+.switch input:focus-visible + .slider {
+    outline: 3px solid #fff;
+    outline-offset: 2px;
+}
+
+.search-button {
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 10px;
+    background: #252525;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.search-button:hover {
+    background: #414141;
+}
+
+.search-button:active {
+    transform: scale(0.98);
+}
+
+.map-area {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: #e8e5df;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+}
+
+.status {
+    position: absolute;
+    z-index: 500;
+    left: 12px;
+    bottom: 12px;
+    max-width: min(440px, calc(100% - 24px));
+    padding: 10px 13px;
+    border: 1px solid rgb(0 0 0 / 10%);
+    border-radius: 10px;
+    background: rgb(255 255 255 / 94%);
+    box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+    color: #333;
+    font-size: 0.82rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Em telas menores, header e nav ficam empilhadas. */
+@media (max-width: 900px) {
+    .topbar {
+        flex-direction: column;
+    }
+
+    .search-header {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 14px 8px;
+    }
+
+    .brand {
+        width: 100%;
+    }
+
+    .route-form {
+        flex-direction: column;
+    }
+
+    .action-nav {
+        justify-content: space-between;
+        padding: 8px 14px 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    .role-label {
+        font-size: 0.76rem;
+    }
+
+    .action-nav {
+        gap: 8px;
+    }
+
+    .search-button {
+        padding-inline: 15px;
+    }
+
+    .status {
+        font-size: 0.75rem;
+    }
+}

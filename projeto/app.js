@@ -9,6 +9,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, './public/html/index.html'))
 })
 
+app.post('/main', (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./public/html/main.html"))
+})
+
 // app.all('*', (req, res) => {
 //     res.sendFile(path.resolve(__dirname, './html/error.html'))
 // })

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFSCarro — Encontrar carona</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Leaflet: biblioteca do mapa -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+        defer
+    ></script>
+    <script src="/js/main.js" defer></script>
+</head>
+<body>
+    <div class="app">
+        <div class="topbar">
+            <header class="search-header">
+                <a class="brand" href="/" aria-label="UFSCarro — início">UFSCarro</a>
+
+                <form id="route-form" class="route-form">
+                    <div class="address-field">
+                        <label class="sr-only" for="origin">Endereço de partida</label>
+                        <input
+                            id="origin"
+                            name="origin"
+                            type="text"
+                            placeholder="Endereço de partida"
+                            autocomplete="street-address"
+                        >
+                        <button
+                            id="locate-button"
+                            class="location-button"
+                            type="button"
+                            title="Usar minha localização atual"
+                            aria-label="Usar minha localização atual"
+                        >⌖</button>
+                    </div>
+
+                    <div class="address-field">
+                        <label class="sr-only" for="destination">Endereço de destino</label>
+                        <input
+                            id="destination"
+                            name="destination"
+                            type="text"
+                            placeholder="Para onde vamos?"
+                            autocomplete="off"
+                        >
+                    </div>
+                </form>
+            </header>
+
+            <nav class="action-nav" aria-label="Opções de viagem">
+                <div class="role-switch">
+                    <span id="passenger-label" class="role-label active">Passageiro</span>
+                    <label class="switch" aria-label="Alternar entre passageiro e motorista">
+                        <input id="role-toggle" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <span id="driver-label" class="role-label">Motorista</span>
+                </div>
+                <button id="search-button" class="search-button" type="submit" form="route-form">
+                    Buscar
+                </button>
+            </nav>
+        </div>
+
+        <main class="map-area">
+            <div id="map" role="application" aria-label="Mapa de localização e caronas"></div>
+            <div id="status" class="status" role="status" aria-live="polite">
+                Permitindo localização? Clique no símbolo ⌖ para centralizar o mapa na sua posição.
+            </div>
+        </main>
+    </div>
+</body>
+</html>
